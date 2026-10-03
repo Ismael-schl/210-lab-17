@@ -9,6 +9,11 @@ struct Node {
     Node *next;
 };
 
+void prepend(Node *);
+void append(Node *);
+void deleteNode(Node *);
+void insertNode(Node *);
+void deleteList(Node *&);
 void output(Node *);
 
 int main() {
@@ -34,34 +39,7 @@ int main() {
     }
     output(head);
 
-    // deleting a node
-    cout << "Which node to delete? " << endl;
-    output(head);
-    int entry;
-    cout << "Choice --> ";
-    cin >> entry;
-
-    // traverse that many times and delete that node
-    Node *current = head;
-    Node *prev = nullptr;  // start prev as nullptr to detect head deletion
-
-    for (int i = 0; i < (entry - 1); i++) {
-        prev = current;
-        current = current->next;
-    }
-
-    // at this point, delete current and reroute pointers
-    if (current) {
-        if (prev == nullptr) {
-            // deleting the head node
-            head = current->next;
-        } else {
-            prev->next = current->next;
-        }
-        delete current;
-        current = nullptr;
-    }
-    output(head);
+    
 
     // insert a node
     cout << "After which node to insert 10000? " << endl;
@@ -120,4 +98,24 @@ void output(Node *hd) {
         current = current->next;
     }
     cout << endl;
+}
+
+void prepend(Node *){
+
+}
+
+void append(Node *) {
+
+}
+
+void deleteNode(Node *){
+    
+}
+
+void insertNode(Node *) {
+
+}
+
+void deleteList(Node *&) {
+
 }
