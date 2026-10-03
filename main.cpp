@@ -86,6 +86,7 @@ int main() {
     return 0;
 }
 
+//This function outputs the linked list. I chose to pass by value for this function because it doesn't really matter for pure output
 void output(Node *hd) {
     if (!hd) {
         cout << "Empty list.\n";
@@ -100,8 +101,10 @@ void output(Node *hd) {
     cout << endl;
 }
 
+//This function adds a float to the beginning of the linked list and adjusts what it points to. I chose to pass by reference because I want the actual head pointer to change.
 void prepend(Node *&head){
     Node *newnode = new Node;
+    //Input validation I added before knowning it wasn't required
     while (true) {
         cout << "Enter the float value you'd like to prepend: ";
         cin >> newnode->value;
@@ -125,9 +128,11 @@ void prepend(Node *&head){
     output(head);
 }
 
+//This function adds a node to the end of the list and links the second to last node to it. I chose to pass by reference to adjust the actual last pointer.
 void append(Node *&head) {
     Node *newnode = new Node;
     newnode->next = nullptr;
+    //Input validation I added before knowning it wasn't required
     while (true) {
         cout << "Enter the float value you'd like to append: ";
         cin >> newnode->value;
@@ -153,6 +158,7 @@ void append(Node *&head) {
     output(head);        
 }
 
+//This function deletes a node at a certain position in the list. I chose to pass by reference to actually delete any memory used by the deleted node.
 void deleteNode(Node *&head){
     // deleting a node
     cout << "Which node to delete? " << endl;
@@ -183,6 +189,7 @@ void deleteNode(Node *&head){
     output(head);
 }
 
+//This function inserts a node after a certain node position. I chose to pass by reference adjust the element before the new one, so they are properly linked.
 void insertNode(Node *&head) {
     // insert a node
     int entry = 0;
@@ -218,6 +225,7 @@ void insertNode(Node *&head) {
     output(head);
 }
 
+//This function deletes the entire list.
 void deleteList(Node *&head) {
        // deleting the linked list
     Node* current = head;
