@@ -43,15 +43,16 @@ int main() {
     //Choice menu
     int choice = 0;
         
-    while (choice != 6) {
+    while (choice != 7) {
         cout << "How would you like to manipulate this linked list?" << endl  << endl<< "To add a number to the end, press 1, then enter." << endl;
         cout << "To add a a number to the beginning, press 2, then enter." << endl;
         cout << "To delete a certain number in the list, press 3, then enter." << endl;
         cout << "To insert a certain number into the list, press 4, then enter." << endl;
         cout << "To delete the entire list, press 5, then enter." << endl;
-        cout << "To end, press 6, then enter." << endl;
+        cout << "To output the entire list, press 6, then enter." << endl;
+        cout << "To end, press 7, then enter." << endl;
         cin >> choice;
-        if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6) {
+        if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6 || choice == 7) {
             if (choice == 1) {
                 append(head);
             }
@@ -67,16 +68,19 @@ int main() {
             if (choice == 5) {
                 deleteList(head);
             }
+            if (choice == 6) {
+                output(head);
+            }
+        }
+        else if (cin.fail()) {
+            cin.clear();
+            cin.ignore(1000,'\n');
+            cout << "Error: choice must be in integer form." << endl;
         }
         else {
-            if (cin.fail()) {
-                cout << "Error: choice must be in integer form.";
-                cin.clear();
-                cin.ignore(1000,'\n');
-            }
             cin.clear();
             cin.ignore(1000, '\n');
-            cout << "Error: please enter a value from 1-6" << endl;
+            cout << "Error: please enter a value from 1-7" << endl;
         }
     }
     return 0;
