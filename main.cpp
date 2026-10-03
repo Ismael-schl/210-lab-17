@@ -38,6 +38,7 @@ int main() {
         }
     }
     output(head);
+    append(head);
     deleteNode(head);
     insertNode(head);
     deleteList(head);
@@ -59,11 +60,22 @@ void output(Node *hd) {
 }
 
 void prepend(Node *&head){
+    Node *newnode = new Node;
+    cout << "Enter the integer value you'd like to prepend: ";
+    cin >> newnode->value;
+    if (head == nullptr) {
+        head = newnode;
+        newnode->next = nullptr;
+    }
+    else {
+        
+    }
 
 }
 
 void append(Node *&head) {
     Node *newnode = new Node;
+    newnode->next = nullptr;
     cout << "Enter the integer value you'd like to append: ";
     cin >> newnode->value;
     if (head == nullptr) {
@@ -72,19 +84,12 @@ void append(Node *&head) {
     }
     else {
         Node *current = head;
-        Node *prev = nullptr;
-        for (int i = 0; i < SIZE; i++) {
-            prev = current;
-            current = current->next;
-            if (current->next == nullptr) {
-                Node* last = current;
-                current->next = newnode->value;
-                newnode->next = nullptr;
-
+        while (current->next != nullptr) {
+                current = current-> next;
             }
+        current->next = newnode;
         }
-        
-    }
+    output(head);        
 }
 
 void deleteNode(Node *&head){
