@@ -41,6 +41,7 @@ int main() {
     output(head);
     //Choice menu
     int choice = 0;
+        
     while (choice != 6) {
         cout << "How would you like to manipulate this linked list?" << endl  << endl<< "To add a number to the end, press 1, then enter." << endl;
         cout << "To add a a number to the beginning, press 2, then enter." << endl;
@@ -68,7 +69,6 @@ int main() {
         }
         else {
             cout << "Error: please enter a value from 1-6" << endl;
-            cin >> choice;
         }
     }
     return 0;
