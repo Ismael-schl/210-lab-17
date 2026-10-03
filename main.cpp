@@ -38,51 +38,9 @@ int main() {
         }
     }
     output(head);
-
-    
-
-    // insert a node
-    cout << "After which node to insert 10000? " << endl;
-    count = 1;
-    current = head;
-    while (current) {
-        cout << "[" << count++ << "] " << current->value << endl;
-        current = current->next;
-    }
-    cout << "Choice --> ";
-    cin >> entry;
-
-    current = head;
-    prev = nullptr;  // reset prev to nullptr for same reason
-
-    for (int i = 0; i < entry; i++) {
-        prev = current;
-        current = current->next;
-    }
-
-    // at this point, insert a node between prev and current
-    Node *newnode = new Node;
-    newnode->value = 10000;
-    newnode->next = current;
-
-    if (prev == nullptr) {
-        // inserting before the head
-        head = newnode;
-    } else {
-        prev->next = newnode;
-    }
-    output(head);
-
-    // deleting the linked list
-    current = head;
-    while (current) {
-        head = current->next;
-        delete current;
-        current = head;
-    }
-    head = nullptr;
-    output(head);
-
+    deleteNode(head);
+    insertNode(head);
+    deleteList(head);
     return 0;
 }
 
@@ -100,12 +58,16 @@ void output(Node *hd) {
     cout << endl;
 }
 
-void prepend(Node *&){
+void prepend(Node *&head){
 
 }
 
-void append(Node *&) {
-
+void append(Node *&head) {
+    int value;
+    Node *newnode = new Node;
+    if (head == nullptr) {
+        cout  "Enter the integer value you'd like to append: "
+    }
 }
 
 void deleteNode(Node *&head){
@@ -139,10 +101,49 @@ void deleteNode(Node *&head){
     output(head);
 }
 
-void insertNode(Node *&) {
+void insertNode(Node *&head) {
+    // insert a node
+    int entry = 0;
+    cout << "After which node to insert 10000? " << endl;
+    int count = 1;
+    Node* current = head;
+    while (current) {
+        cout << "[" << count++ << "] " << current->value << endl;
+        current = current->next;
+    }
+    cout << "Choice --> ";
+    cin >> entry;
 
+    current = head;
+    Node* prev = nullptr;  // reset prev to nullptr for same reason
+
+    for (int i = 0; i < entry; i++) {
+        prev = current;
+        current = current->next;
+    }
+
+    // at this point, insert a node between prev and current
+    Node *newnode = new Node;
+    newnode->value = 10000;
+    newnode->next = current;
+
+    if (prev == nullptr) {
+        // inserting before the head
+        head = newnode;
+    } else {
+        prev->next = newnode;
+    }
+    output(head);
 }
 
-void deleteList(Node *&) {
-
+void deleteList(Node *&head) {
+       // deleting the linked list
+    Node* current = head;
+    while (current) {
+        head = current->next;
+        delete current;
+        current = head;
+    }
+    head = nullptr;
+    output(head);
 }
