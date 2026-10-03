@@ -1,5 +1,6 @@
 //Lab 17 | COMSC 210 | Ismael Hadi
 #include <iostream>
+#include <cstdlib>
 using namespace std;
 
 const int SIZE = 7;  
@@ -39,24 +40,37 @@ int main() {
     }
     output(head);
     //Choice menu
-    int choice = 10;
-    bool goodInput =
-    while ()
-        cout << "How would you like to manipulate this linked list? To add a number to the end, press 1, then enter. " << endl;
+    int choice = 0;
+    while (choice != 6) {
+        cout << "How would you like to manipulate this linked list?" << endl  << endl<< "To add a number to the end, press 1, then enter." << endl;
         cout << "To add a a number to the beginning, press 2, then enter." << endl;
         cout << "To delete a certain number in the list, press 3, then enter." << endl;
         cout << "To insert a certain number into the list, press 4, then enter." << endl;
         cout << "To delete the entire list, press 5, then enter." << endl;
-        cout << "To end, press 6, then enter.";
+        cout << "To end, press 6, then enter." << endl;
         cin >> choice;
-        if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice = 5 || choice = 6) {
-            goodInput = true;
+        if (choice == 1 || choice == 2 || choice == 3 || choice == 4 || choice == 5 || choice == 6) {
+            if (choice == 1) {
+                append(head);
+            }
+            if (choice == 2) {
+                prepend(head);
+            }
+            if (choice == 3) {
+                deleteNode(head);
+            }
+            if (choice == 4) {
+                insertNode(head);
+            }
+            if (choice == 5) {
+                deleteList(head);
+            }
         }
-
-    prepend(head);
-    deleteNode(head);
-    insertNode(head);
-    deleteList(head);
+        else {
+            cout << "Error: please enter a value from 1-6" << endl;
+            cin >> choice;
+        }
+    }
     return 0;
 }
 
