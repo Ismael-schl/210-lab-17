@@ -68,6 +68,8 @@ int main() {
             }
         }
         else {
+            cin.clear();
+            cin.ignore(1000, '\n');
             cout << "Error: please enter a value from 1-6" << endl;
         }
     }
