@@ -1,6 +1,7 @@
 //Lab 17 | COMSC 210 | Ismael Hadi
 #include <iostream>
 #include <cstdlib>
+
 using namespace std;
 
 const int SIZE = 7;  
@@ -68,6 +69,11 @@ int main() {
             }
         }
         else {
+            if (cin.fail()) {
+                cout << "Error: choice must be in integer form.";
+                cin.clear();
+                cin.ignore(1000,'\n');
+            }
             cin.clear();
             cin.ignore(1000, '\n');
             cout << "Error: please enter a value from 1-6" << endl;
@@ -92,8 +98,17 @@ void output(Node *hd) {
 
 void prepend(Node *&head){
     Node *newnode = new Node;
-    cout << "Enter the integer value you'd like to prepend: ";
-    cin >> newnode->value;
+    while (true) {
+        cout << "Enter the float value you'd like to prepend: ";
+        cin >> newnode->value;
+        if (cin.fail()) {
+            cout << "Invalid input, must be a float" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        break;
+    }
     if (head == nullptr) {
         head = newnode;
         newnode->next = nullptr;
@@ -109,8 +124,17 @@ void prepend(Node *&head){
 void append(Node *&head) {
     Node *newnode = new Node;
     newnode->next = nullptr;
-    cout << "Enter the integer value you'd like to append: ";
-    cin >> newnode->value;
+    while (true) {
+        cout << "Enter the float value you'd like to append: ";
+        cin >> newnode->value;
+        if (cin.fail()) {
+            cout << "Invalid input, must be a float" << endl;
+            cin.clear();
+            cin.ignore(1000, '\n');
+            continue;
+        }
+        break;
+    }
     if (head == nullptr) {
         head = newnode;
         newnode->next = nullptr;
@@ -132,7 +156,6 @@ void deleteNode(Node *&head){
     int entry;
     cout << "Choice --> ";
     cin >> entry;
-
     // traverse that many times and delete that node
     Node *current = head;
     Node *prev = nullptr;  // start prev as nullptr to detect head deletion
