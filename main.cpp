@@ -20,8 +20,6 @@ void output(Node *hd);
 
 int main() {
     Node *head = nullptr;
-    int count = 0;
-
     // create a linked list of size SIZE with random numbers 0-99
     for (int i = 0; i < SIZE; i++) {
         int tmp_val = rand() % 100;
@@ -40,12 +38,13 @@ int main() {
         }
     }
     output(head);
+    
     //Choice menu
-    int choice = 0;
-        
+    int choice = 0;    
+    //While loop with input validation
     while (choice != 7) {
         cout << "How would you like to manipulate this linked list?" << endl  << endl<< "To add a number to the end, press 1, then enter." << endl;
-        cout << "To add a a number to the beginning, press 2, then enter." << endl;
+        cout << "To add a number to the beginning, press 2, then enter." << endl;
         cout << "To delete a certain number in the list, press 3, then enter." << endl;
         cout << "To insert a certain number into the list, press 4, then enter." << endl;
         cout << "To delete the entire list, press 5, then enter." << endl;
@@ -83,10 +82,11 @@ int main() {
             cout << "Error: please enter a value from 1-7" << endl;
         }
     }
+    deleteList(head);
     return 0;
 }
 
-//This function outputs the linked list. I chose to pass by value for this function because it doesn't really matter for pure output
+//This function outputs the linked list. I chose to pass by value for this function because the head does not change at all.
 void output(Node *hd) {
     if (!hd) {
         cout << "Empty list.\n";
@@ -128,7 +128,7 @@ void prepend(Node *&head){
     output(head);
 }
 
-//This function adds a node to the end of the list and links the second to last node to it. I chose to pass by reference to adjust the actual last pointer.
+//This function adds a node to the end of the list and links the second to last node to it. I chose to pass by reference incase the new node would become the head.
 void append(Node *&head) {
     Node *newnode = new Node;
     newnode->next = nullptr;
@@ -158,7 +158,7 @@ void append(Node *&head) {
     output(head);        
 }
 
-//This function deletes a node at a certain position in the list. I chose to pass by reference to actually delete any memory used by the deleted node.
+//This function deletes a node at a certain position in the list. I chose to move the actual head to the second node.
 void deleteNode(Node *&head){
     // deleting a node
     cout << "Which node to delete? " << endl;
@@ -189,7 +189,7 @@ void deleteNode(Node *&head){
     output(head);
 }
 
-//This function inserts a node after a certain node position. I chose to pass by reference adjust the element before the new one, so they are properly linked.
+//This function inserts a node after a certain node position. I chose to pass by reference so the head could change if necessary.
 void insertNode(Node *&head) {
     // insert a node
     int entry = 0;
@@ -225,7 +225,7 @@ void insertNode(Node *&head) {
     output(head);
 }
 
-//This function deletes the entire list.
+//This function deletes the entire list. I chose to pass by reference to allow the real head to become nullptr.
 void deleteList(Node *&head) {
        // deleting the linked list
     Node* current = head;
