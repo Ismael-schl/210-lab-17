@@ -9,12 +9,12 @@ struct Node {
     Node *next;
 };
 
-void prepend(Node *);
-void append(Node *);
-void deleteNode(Node *);
-void insertNode(Node *);
-void deleteList(Node *&);
-void output(Node *);
+void prepend(Node *&head);
+void append(Node *&head);
+void deleteNode(Node *&head);
+void insertNode(Node *&head);
+void deleteList(Node *&head);
+void output(Node *hd);
 
 int main() {
     Node *head = nullptr;
@@ -100,19 +100,46 @@ void output(Node *hd) {
     cout << endl;
 }
 
-void prepend(Node *){
+void prepend(Node *&){
 
 }
 
-void append(Node *) {
+void append(Node *&) {
 
 }
 
-void deleteNode(Node *){
-    
+void deleteNode(Node *&head){
+    // deleting a node
+    cout << "Which node to delete? " << endl;
+    output(head);
+    int entry;
+    cout << "Choice --> ";
+    cin >> entry;
+
+    // traverse that many times and delete that node
+    Node *current = head;
+    Node *prev = nullptr;  // start prev as nullptr to detect head deletion
+
+    for (int i = 0; i < (entry - 1); i++) {
+        prev = current;
+        current = current->next;
+    }
+
+    // at this point, delete current and reroute pointers
+    if (current) {
+        if (prev == nullptr) {
+            // deleting the head node
+            head = current->next;
+        } else {
+            prev->next = current->next;
+        }
+        delete current;
+        current = nullptr;
+    }
+    output(head);
 }
 
-void insertNode(Node *) {
+void insertNode(Node *&) {
 
 }
 
