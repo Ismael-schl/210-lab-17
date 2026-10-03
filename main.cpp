@@ -63,10 +63,27 @@ void prepend(Node *&head){
 }
 
 void append(Node *&head) {
-    int value;
     Node *newnode = new Node;
+    cout << "Enter the integer value you'd like to append: ";
+    cin >> newnode->value;
     if (head == nullptr) {
-        cout  "Enter the integer value you'd like to append: "
+        head = newnode;
+        newnode->next = nullptr;
+    }
+    else {
+        Node *current = head;
+        Node *prev = nullptr;
+        for (int i = 0; i < SIZE; i++) {
+            prev = current;
+            current = current->next;
+            if (current->next == nullptr) {
+                Node* last = current;
+                current->next = newnode->value;
+                newnode->next = nullptr;
+
+            }
+        }
+        
     }
 }
 
