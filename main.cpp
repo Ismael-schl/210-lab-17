@@ -38,7 +38,12 @@ int main() {
         }
     }
     output(head);
+    //Choice menu
+    cout << "How would you like to manipulate this linked list? To add a number to the end, press 1, then enter. 
+    To add a a number to the beginning, press 2, then enter.
+    To delete 
     append(head);
+    prepend(head);
     deleteNode(head);
     insertNode(head);
     deleteList(head);
@@ -68,9 +73,11 @@ void prepend(Node *&head){
         newnode->next = nullptr;
     }
     else {
-        
+        Node* temp = head;
+        newnode->next = temp;
+        head = newnode;
     }
-
+    output(head);
 }
 
 void append(Node *&head) {
